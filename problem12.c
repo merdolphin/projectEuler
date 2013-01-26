@@ -1,5 +1,5 @@
 // Problem 12
-// written by lina <lina.oahz@gmail.com> 
+// written by lina <lina.oahz@gmail.com>
 //
 
 #include <stdio.h>
