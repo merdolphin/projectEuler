@@ -36,18 +36,22 @@ int main(){
     }   
     
     qsort(name, index, sizeof(*name)/sizeof(*name[0]),comp);
+    
     for(i=0;i<index;i++){
+        
         int j=0;
         int sum = 0;
+
         while(name[i][j] != '\0'){
                         
             sum += name[i][j]-'A'+1;
             j++;
         }
+        
         Tsum += (i+1)*sum;
        }
      
-     printf("%d\n", Tsum);
+    printf("%d\n", Tsum);
 
     free(name[index]);  
     fclose(fp);
