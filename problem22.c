@@ -5,4 +5,11 @@
 
 #include <stdio.h>
 
+int main(){
 
+    FILE *fp;
+
+    fp = fopen("names.txt", "r");
+
+    return 0;
+}
