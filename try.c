@@ -1,30 +1,23 @@
 #include <stdio.h>
 
-static unsigned collatz_count(unsigned n);
-
 int main(void)
 {
-      unsigned i, max_c = 0, max_i = 0;
+  int z = 0;
+  int n = 200;
+  
+  int a, b, c, d, e, f, g;
+  for (a = 0; a <= n; a += 200)
+    for (b = 0; b <= n; b += 100)
+      for (c = 0; c <= n; c += 50)
+        for (d = 0; d <= n; d += 20)
+          for (e = 0; e <= n; e += 10)
+            for (f = 0; f <= n; f += 5)
+              for (g = 0; g <= n; g += 2)
+                if (a+b+c+d+e+f+g <= 200)
+                  z++;
+  printf("%d\n", z);
 
-        for (i = 1; i < 1000000; i++) {
-                unsigned c = collatz_count(i);
-                    if (c > max_c) {
-                              max_c = c;
-                                    max_i = i;
-                                        }
-                                          }
-                                            printf("%u\n", max_i);
-                                              return 0;
-}
-
-unsigned collatz_count(unsigned n)
-{
-      unsigned c = 0;
-        while (n > 1) {
-                n = n%2==0 ? n/2 : 3*n+1;
-                    c++;
-                      }
-                        return c+1;
+  return 0;
 }
 
 
