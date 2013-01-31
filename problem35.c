@@ -3,7 +3,9 @@
 // written by lina <lina.oahz@gmail.com> 
 // start: Thu Jan 31 17:41:38 SGT 2013
 //   end: Fri Feb  1 00:22:47 SGT 2013
-// 
+//* I am not a programmer, so I forgive myself not writting no-bug program.
+//* This program has a little problem, it's done some repetitive work for number between 10-99. 
+//* other parts are amazing, at least to me, I spent hours on it.  
 
 
 #include <stdio.h>
@@ -49,13 +51,13 @@ int main(){
                     new[index][idx] = buf[k]-'0';
                     idx++;
                     }
-                for(k = 0; k<=j; k++){
+                for(k = 0; k<=j; k++){ //This part better add one if to reduce the repetitive from 10-99 to generate its own.
                     //printf("\nak is %d,\naidx is %d \n", k, idx);
                     new[index][idx] = buf[k]-'0';
                     idx++;
                 }
             
-                printf("\n");
+                //printf("\n");
                 int d = 1, newN = 0;
                 while(idx>0){           
                     newN += new[index][idx-1]*d;
@@ -68,11 +70,13 @@ int main(){
                 //printf("%d\n",newN);
             }
                 
-            index++;                
+            index++;    
+            free(new[index]);            
           }
         NEXT:
             ;
         }
+        free(new);
         printf("%d\n",index);
     return 0;
 }
