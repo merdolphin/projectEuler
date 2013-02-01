@@ -17,7 +17,7 @@
 int is_prime(int N){
     int i;
    
-    if(N == 2 || N == 1)
+    if(N == 2)
         return 1;
 
     if(N>2){
