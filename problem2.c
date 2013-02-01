@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 
+
 long fibonacci(int N){
 
     long i, sum = 1; 
@@ -11,7 +12,7 @@ long fibonacci(int N){
         sum = 2;
         
     if(N > 3){    
-        for(i=3; i<=N; i++){
+        for(i=3; sum<=N; i++){
             sum = a + b;
             printf("%ld\n",sum);
             if(sum%2 == 0){
@@ -28,6 +29,6 @@ long fibonacci(int N){
 
 int main(){
 
-    printf("The sum of the even-valued terms are: %ld\n", fibonacci(90));
+    printf("The sum of the even-valued terms are: %ld\n", fibonacci(4000000));
     return 0;
 }
