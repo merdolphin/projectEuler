@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <libisprime.h>
-#include <stdlib.h>
 #include <math.h>
 
 #define N 1000000
