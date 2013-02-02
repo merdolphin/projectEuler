@@ -11,6 +11,12 @@ int main(){
     printf("The largest int reprensentable is %d\n", INT_MAX);
     printf("The smallest int reprensentable is %d\n", INT_MIN);
 
+    long b = sizeof(long) * 8;
+    printf("Size of long  in this computer = %ld bits \n", b);
+    printf("The largest long reprensentable is %ld \n", LONG_MAX);
+    printf("The smallest long reprensentable is %ld \n", LONG_MIN);
+
+    
     k = INT_MAX;
     
     printf("%d + 1 = %d \n", k, k+1);
