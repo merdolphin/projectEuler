@@ -1,17 +1,25 @@
 /* problem44.c */
 
 // written by lina <lina.oahz@gmail.com> 
+
+///////////////// log ////////////////////////////
 // start: Sat Feb  2 21:14:52 SGT 2013
 //   end: Sat Feb  2 21:56:01 SGT 2013
 // updated to thread version on Sun Feb  3 00:38:06 SGT 2013
+// last updated the "join"   on Mon Feb  4 20:44:32 SGT 2013
+/////////////////////////////////////////////////////////
+
 // gcc -Wall -O3 -o problem44 problem44.c -lpthread -lm
 
 #include <stdio.h>
 #include <math.h>
 #include <pthread.h>
 
-#define NUM_THREADS 4
+#define NUM_THREADS 16
 #define M 1000000
+
+pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
+int minD = 1000;
 
 int formula(int n){
 
@@ -34,7 +42,6 @@ void *look_for_min(void *threadid){
     
     int start, end;
     int j, k;
-    int minD = 1000;
     
     start = tid*M/NUM_THREADS + 1;
     end = start + M/NUM_THREADS -1;
@@ -45,8 +52,11 @@ void *look_for_min(void *threadid){
             sum = formula(j) + formula(k);
             differences = formula(k) - formula(j);
             if(is_pentagonal(sum) && is_pentagonal(differences))
-                if(sum - differences <= minD)
+                if(sum - differences <= minD){
+                    pthread_mutex_lock(&mutex1);
                     minD = sum - differences;
+                    pthread_mutex_unlock(&mutex1);
+                }
         }
         
         //printf("%d\n", formula(i));
@@ -68,6 +78,12 @@ int main(int argc, char *argv[]){
         if(rc)
             printf("Error; return code from pthread_create() is %d\n", rc);
         }
+
+     for(t=0; t<NUM_THREADS; t++){
+         pthread_join(threads[t], NULL);
+     }
+    
+    printf("final mini D is: %d\n", minD);
 
     pthread_exit(NULL);
 
