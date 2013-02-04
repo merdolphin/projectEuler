@@ -43,10 +43,11 @@ int main(){
     
     while(1){
         if(is_triangle(i) && is_pentagonal(i) && is_hexagonal(i)){
-            printf("%d\n", i);
+            printf("the final i is %d\n", i);
             break;
         }
         i++;
+        printf("now is on the step %d\n", i);
     }
 
     return 0;
