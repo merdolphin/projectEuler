@@ -17,7 +17,7 @@
 #include <pthread.h>
 
 #define NUM_THREADS 16
-#define M 1000000
+#define M 100000000
 
 pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;
 int minD = 1000;
