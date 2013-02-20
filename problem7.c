@@ -1,8 +1,5 @@
 // Problem 7
 //written by lina <lina.oahz@gmail.com> on Wed Jan  9 23:17:33 SGT 2013
-///////// compile////////////
-//gcc -Wall -O3 -o 10001st_prime 10001st_prime.c -lm
-/////////////////////////////
 
 #include <stdio.h>
 #include <math.h>
