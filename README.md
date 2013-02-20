@@ -8,6 +8,6 @@ Please kindly notice that my programming is not so-orthodox.
 
 Most I learned/did via reading and googling by myself.
 
-After all, not bad to take it as references.
+After all, not bad to take a look and hopeful can be servered as references for someone who is chocked by some of those problems.
 
-If I have time, programms will be added continuely.   
+To be continue ... 
