@@ -26,7 +26,6 @@ int greater(int n, int r){
     if( mpz_cmp_ui(numerator,1000000) < 0)
         return 0;
     
-    
     for(j=1; j<=n-r; j++)
         mpz_mul_ui(denominator,denominator,j);        
         
@@ -34,7 +33,6 @@ int greater(int n, int r){
 
     if( mpz_cmp_ui(combinator,1000000) > 0)
         return 1; 
-    
            
     return 0;    
 }       
