@@ -48,15 +48,15 @@ int main(){
         }
 
     for(i=0; i<index/2;i++){
-        for(int j=i+1; j<index/2;j++){
+        for(int j=i+1; j<index/2;j++)
             if(contancatePrime(primes[i],primes[j])){
                 for(int k=j+1; k<index; k++){
                     if( contancatePrime(primes[i],primes[k]) && contancatePrime(primes[j],primes[k]) ) {
                         for(int l=k+1; l<index; l++){
-                           // cout <<  primes[i] << " " << " " << primes[j]<< " " << primes[k] << endl;
+                            cout <<  primes[i] << " " << " " << primes[j]<< " " << primes[k] << primes[l] << endl;
                             if( contancatePrime(primes[i],primes[l]) && contancatePrime(primes[j],primes[l]) ){
-                                if(contancatePrime(primes[k],primes[l])){
-                                cout <<  primes[i] << " " << " " << primes[j]<< " " << primes[k] << endl;
+                              //  if(contancatePrime(primes[k],primes[l])){
+                              //  cout <<  primes[i] << " " << " " << primes[j]<< " " << primes[k] << endl;
                                // for(int m=l+1; m<index; m++){
                                 //     if( contancatePrime(primes[i],primes[m])  && contancatePrime(primes[j],primes[m]) && contancatePrime(primes[k],primes[m]) && contancatePrime(primes[l],primes[m])){   
                                         sum = primes[i]+primes[j]+primes[k] +primes[l];//+primes[m] ;
@@ -68,8 +68,8 @@ int main(){
                                          break;
                                          cout << "increase limits" << endl;
                                      }
-                               }
-                                }
+                               
+                                
                             }
                         }
                     }
