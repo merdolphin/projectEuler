@@ -47,12 +47,14 @@ int main(){
            
         }
 
+        int j, k, l, m;
+
     for(i=0; i<index/2;i++){
-        for(int j=i+1; j<index/2;j++)
+        for(j=i+1; j<index/2;j++)
             if(contancatePrime(primes[i],primes[j])){
-                for(int k=j+1; k<index; k++){
+                for(k=j+1; k<index; k++){
                     if( contancatePrime(primes[i],primes[k]) && contancatePrime(primes[j],primes[k]) ) {
-                        for(int l=k+1; l<index; l++){
+                        for(l=k+1; l<index; l++){
                             cout <<  primes[i] << " " << " " << primes[j]<< " " << primes[k] << primes[l] << endl;
                             if( contancatePrime(primes[i],primes[l]) && contancatePrime(primes[j],primes[l]) ){
                               //  if(contancatePrime(primes[k],primes[l])){
