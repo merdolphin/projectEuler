@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-int chain_length (int N){
+int chain_length (long N){
 
     unsigned count = 1;
     while(N>1){
@@ -13,24 +13,27 @@ int chain_length (int N){
         count++;
     }
     return count;
+
+    if(N==1)
+        return count+1;
+
 }
 
 int main(){
     int i;
     int max = 0;
     int number = 0; 
-    int a;
-    for(i=1;i<=1000000;i++){
-        a = chain_length(i);
-        if(a>max){
-            max=a;
+    
+    for(i=3;i<=1000000;i++){
+        if(chain_length(i) > max){
+            max=chain_length(i);
             number=i;
         }
-        printf("%d %d %d %d\n",max, number,a, i);
-
+        
         }
     
-    
+    printf("%d %d\n",max, number);
+
     return 0;
     }    
 
