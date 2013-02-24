@@ -11,7 +11,7 @@ using namespace std;
 #include <cmath>
 #include <math.h>
 
-int is_prime(int N){
+int is_prime(long N){
     int i;
     
     if(N == 2)

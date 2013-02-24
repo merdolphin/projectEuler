@@ -3,6 +3,7 @@
 // written by lina <lina.oahz@gmail.com> 
 // start: Tue Feb  5 17:36:11 SGT 2013
 //   end: Wed Feb  6 03:16:50 SGT 2013
+// last modification on 
 
 #include <stdio.h>
 #include <libisprime.h>
@@ -14,7 +15,6 @@ int main(){
 
     int i, j;
     int primes[N];
-    //primes = malloc(N* sizeof(int));
     int index = 0;
     int longest = 0;
 
