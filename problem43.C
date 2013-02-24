@@ -6,20 +6,19 @@
 
 #include <iostream>
 #include <algorithm>
-#include <new>
 
 using namespace std;
 
 int main(){
 
     int i;
-   // int index;
     int data[10];
     int temp;
   
     unsigned long sum = 0;
     int primes[7] = {2, 3, 5, 7, 11, 13, 17};
     int m;
+
     for(i=0; i<=9; i++)
         data[i]=i;
 
