@@ -5,7 +5,7 @@
 //  start: Tue Feb 26 11:15:03 SGT 2013
 //    end: Tue Feb 26 12:53:05 SGT 2013
 //
-//  g++ -Wall -o problem51 problem51.C prime.C
+//  g++ -Wall -o problem51 problem51.C 
 //
 //============================================
 

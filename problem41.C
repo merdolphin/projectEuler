@@ -3,7 +3,7 @@
 // written by lina <lina.oahz@gmail.com> 
 // start: Mon Feb 25 00:27:52 SGT 2013
 //   end: Mon Feb 25 00:57:12 SGT 2013
-// g++ -Wall -o problem41 problem41.C prime.C
+// g++ -Wall -o problem41 problem41.C 
 
 #include <iostream>
 #include <algorithm>

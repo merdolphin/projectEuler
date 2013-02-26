@@ -13,7 +13,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "prime.h"
+#include "isprime.h"
 #include <new>
  
 #define limit 100000
@@ -28,14 +28,14 @@ int catP(int *array, int a, int b){
 
     ss1 >> val1;
     
-    if(! is_prime(val1))
+    if(! is_prime<int>(val1))
         return 0;
     
     ss2 << array[b] << array[a];
         
     ss2 >> val2;
     
-    if(is_prime(val1) && is_prime(val2))
+    if(is_prime<int>(val1) && is_prime<int>(val2))
         return 1;
     
     return 0;     
@@ -52,7 +52,7 @@ int main(){
    
 
     for(i=1; i<=limit; i++)
-        if( is_prime(i) ){
+        if( is_prime<int>(i) ){
    
             primes[index++] = i;
            
@@ -86,10 +86,6 @@ int main(){
                 }
             }
         }
-                                                                     
-                       
-        
-                                   
                    
     cout << "Result is " << minSum << endl;
     delete [] primes;
