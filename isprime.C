@@ -1,13 +1,7 @@
-/* prime.C */
+/* isprime.C */
 
 // written by lina <lina.oahz@gmail.com> 
 
-/*#include <iostream>
-#include <cmath>
-#include <math.h>
-
-using namespace std;
-*/
 #include <cmath>
 #include <math.h>
 
