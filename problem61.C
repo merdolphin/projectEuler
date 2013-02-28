@@ -3,7 +3,7 @@
 //
 //  written by lina <lina.oahz@gmail.com> 
 //  start: Tue Feb 26 20:23:24 SGT 2013
-//    end:
+//    end: Thu Feb 28 16:43:47 SGT 2013
 //
 //============================================
 
@@ -12,11 +12,8 @@
 //============================================
 
 #include <iostream>
-#include <algorithm>
 #include <cmath>
 #include <math.h>
-#include <map>
-#include <vector>
 #include <list>
 
 using namespace std;
@@ -26,15 +23,15 @@ using namespace std;
 //============================================
 
 
-bool eq(int a, int b, int c){
+int eq(int a, int b, int c){
     
     int sq;
 
     sq = (int) sqrt(b*b-4*a*c);
     
     if(sq*sq == b*b-4*a*c && (-b + sq)%(2*a) == 0)
-        return true;
-    return false;    
+        return (-b+sq)/(2*a);
+    return 0;    
 }
 
 bool is_triangle(int p){
@@ -87,21 +84,90 @@ list<int> pushtolist(list<int> mylist, int a, int b){
     return mylist;
 }
 
+
+
 bool check_list(list<int> mylist){
-    list<int>::iterator it;
-    for(it=mylist.begin();it!=mylist.end();it++)
-        if(is_triangle (*it) && is_pentagonal(*it))
-            return false;
-    return true;
+    list<int> mynewlist;
+    list<int>::iterator it=mylist.begin();
+    
+   do{
+       if(is_triangle (*it))
+            mynewlist.push_back(3);           
+            
+       if(is_square(*it))
+            mynewlist.push_back(4);            
+        
+       if(is_pentagonal(*it))
+            mynewlist.push_back(5);    
+        
+       if(is_hexagonal(*it))
+            mynewlist.push_back(6);            
+        
+       if(is_heptagonal(*it))
+            mynewlist.push_back(7);
+                    
+       if(is_octagonal(*it))
+            mynewlist.push_back(8);
+                                  
+       it++;
+
+    } while(it != mylist.end());
+
+    mynewlist.sort();
+    mynewlist.unique();
+
+    if(mynewlist.size() == 6)
+            return true;
+    
+    return false;
 }
 
-int main(){
 
-    int i, j; 
+bool check_list_different_n(list<int> mylist){
+    
+    list<int> mynewlist;
+    list<int>::iterator it = mylist.begin();
+
+    int flag3 = 1;
+    while(it !=mylist.end() ){
+       
+        if(flag3 && is_triangle (*it)){
+            mynewlist.push_back( eq(1, 1, -2*(*it)) );
+            flag3 = 0;
+        }
+        if( is_square(*it))
+            mynewlist.push_back( eq(1, 0, -(*it)) );
   
+        if(is_pentagonal(*it))
+            mynewlist.push_back( eq(3, -1, -2*(*it)) );
+        
+        if(is_hexagonal(*it))
+            mynewlist.push_back( eq(2, -1, -(*it)) );
+        
+        if(is_heptagonal(*it))
+            mynewlist.push_back( eq(5, -3, -2*(*it)) );
+        
+        if(is_octagonal(*it))
+            mynewlist.push_back( eq(3, -2, -(*it)) );
+            
+       it++;     
+    }
+    
+    mynewlist.sort();
+    mynewlist.unique();
+    
+    if(mynewlist.size() == 6)
+            return true;
+    
+    return false;
+}
 
-    for(i=10;i<100;i++)
-        for(j=10;j<100;j++)
+
+
+int main(){
+      
+    for(int i=10;i<100;i++)
+        for(int j=10;j<100;j++)
             if(is_octagonal(i*100+j))
                 for(int k = 10; k<100; k++)
                                                                                           
@@ -124,18 +190,16 @@ int main(){
                                                     sixcyclelist = pushtolist(sixcyclelist, m, n);
                                                     sixcyclelist = pushtolist(sixcyclelist, n, i);
 
-                                                    //if( check_list(sixcyclelist) )
-                                                      //  break;
-
-                                                    for(it=sixcyclelist.begin(); it != sixcyclelist.end(); it++)
-                                                        cout << *it << " " ;
-                                                    cout << endl;    
+                                                    if( check_list(sixcyclelist) )
+                                                        if( check_list_different_n (sixcyclelist) ){
+                                                            int sum = 0;
+                                                            for(it=sixcyclelist.begin(); it != sixcyclelist.end(); it++)
+                                                                sum += *it; 
+                                                            cout << sum  << endl ;
+                                                            
+                                                    }
                                             }
-                                                                                            
-                                
-          
-                    
-                    
+                  
 
       return 0;
 }
