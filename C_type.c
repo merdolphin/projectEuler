@@ -16,7 +16,10 @@ int main(){
     printf("The largest long reprensentable is %ld \n", LONG_MAX);
     printf("The smallest long reprensentable is %ld \n", LONG_MIN);
 
-    
+    long double c = sizeof(long double) * 8;
+     printf("The largest long double reprensentable is %ld \n", LONG_MAX);
+     printf("The smallest long double reprensentable is %ld \n", LONG_MIN);
+         
     k = INT_MAX;
     
     printf("%d + 1 = %d \n", k, k+1);
