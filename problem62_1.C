@@ -1,5 +1,5 @@
 //===========================================
-//  problem62.C 
+//  problem62_1.C 
 //
 //  written by lina <lina.oahz@gmail.com> 
 //  start: Thu Feb 28 22:03:27 SGT 2013
@@ -106,14 +106,14 @@ int main(){
             mpz_clear(temp);
             mpz_clear(m);
         }while(next_permutation(cube.begin(), cube.end()));
-            
-            mpz_clear(a);
         
         if(count == 5){
+            cout << a << endl;
             cout << i << endl;
             break; 
         }
         
+        mpz_clear(a);
     }
 
     return 0;
