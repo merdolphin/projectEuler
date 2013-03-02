@@ -8,6 +8,7 @@
 // The running is so low due to use the gmp. 
 // I am stuck about how to find out the cube of the big number.
 // but this one is working except time consuming.
+// comment: never use a gun to kill a mosquito. 
 //============================================
 
 //============================================
