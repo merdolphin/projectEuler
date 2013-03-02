@@ -22,16 +22,16 @@ using namespace std;
 // main code area
 //============================================
 
-int find_min_index(int *array, int i, int j){
+int find_min_index(int * array, int i, int j){
     int k;
-    int minID = i;
+    int minIndex = i;
     int temp = array[i];
     for(k=i+1; k<=j; k++)
         if(array[k] < temp){
             temp = array[k];
-            minID = k;
+            minIndex = k;
         }
-    return minID;
+    return minIndex;
 }
 
 int main(){
