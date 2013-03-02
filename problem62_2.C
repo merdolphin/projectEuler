@@ -52,9 +52,8 @@ int main(){
             long temp = 0;
             istringstream buffer(s);
             buffer >> temp;
-            if(temp < a)
-                break;        
-            if(is_cube (temp) )
+            
+            if( is_cube (temp) )
                 count++;    
         }while(next_permutation(s.begin(), s.end()));
         
