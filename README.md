@@ -2,14 +2,7 @@ Project Euler
 
 ============
 
-Here I mainly use C/C++ to solve those problems in Project Euler.
+Here mainly use C/C++ to solve those problems in Project Euler.
 
-Please kindly notice that my programming is not so-orthodox. 
-
-Most I learned/did via reading and googling, mostly trained by myself.
-
-After all, not bad to take a look,
-
-Hopefully, it can be servered as references for someone who is chocked by some of those problems.
-
+Please note that those with _1, _2, _3 correspond to the version 1, version 2 and version 3. Version 1 basically is built on brute-force way, it still has some elegance to waste computer time. 
 To be continue ... 
