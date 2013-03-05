@@ -11,16 +11,8 @@ int main(){
 
     if(a > b) 
         cout << " works " << endl;
-
-    a = (double) 428570/999997;
-    b = (double) 428567/999990;
-    
-    cout << setprecision(12) << a << endl;
-    cout << setprecision(12) << b << endl;
-
-    if(a > b) 
-        cout << " works again " << endl;
-
+    int c = 1e6;
+    cout << c<< endl;
 
     return 0;    
 }
