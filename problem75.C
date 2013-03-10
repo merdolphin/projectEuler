@@ -2,7 +2,7 @@
 //  problem75.C 
 //
 //  written by lina <lina.oahz@gmail.com> 
-//  start: Tue Mar  5 23:34:17 SGT 2013
+//  start: Wed Mar  6 16:00:48 SGT 2013
 //    end:
 //
 //============================================
@@ -23,43 +23,33 @@ using namespace std;
 
 #define L 15e5
 
-bool only_one_triangle(long );
-
 int main(){
-    
-    long l=36;
-    if(only_one_triangle(l))
-        cout << l << endl;
 
+    long a, b;
+    
+    long count = 0;
+
+    for(long l=3; l<=L; l++){
+
+        int result = 0;
+        for(a=1; a<l/3;a++){
+            for(b=a; b<(l-a)/2;b++)
+                if( a*a + b*b == (l-a-b)*(l-a-b) )
+                    result++;
+                
+            if( result >=2 )
+                break;
+        }
+                                                 
+        if(result == 1){
+            cout << l << endl;
+            count++;
+        }
+        
+    }
+
+    cout << count << endl;
     return 0;
 }
 
-bool only_one_triangle(long l){
-    
-    int m, n;
-    int result = 0;
-
-    for(m=1; m<l; m++){
-        
-        //if( result == 2 )
-        //    break;
-
-        for(n=1; n<m; n++){
-            int a =0, b = 0, c = 0;
-            a = 2*m*n;
-            b = m*m - n*n;
-            c = m*m + n*n;
-
-            if(a+b+c == l){
-                result++;
-                cout <<m << " " << n << " " << a << " " << b << " " << c << endl;
-            }
-        }
-    }
-
-    if(result == 1)
-        return true;
-
-    return false;    
-}
 
