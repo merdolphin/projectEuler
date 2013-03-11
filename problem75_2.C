@@ -5,6 +5,9 @@
 //  start: Tue Mar  5 23:34:17 SGT 2013
 //    end:
 //
+//  Please refer:
+//  http://en.wikipedia.org/wiki/Pythagorean_triple
+// 
 //============================================
 
 //============================================

@@ -5,6 +5,9 @@
 //  start: Wed Mar  6 16:00:48 SGT 2013
 //    end:
 //
+//  A day without a smile is a day wasted.
+//  And I waste three decades by far. 
+//  -- lithium sodium
 //============================================
 
 //============================================
@@ -33,18 +36,19 @@ int main(){
 
         int result = 0;
         for(a=1; a<l/3;a++){
-            for(b=a; b<(l-a)/2;b++)
+            for(b=a; b<=(l-a)/2;b++){
+
                 if( a*a + b*b == (l-a-b)*(l-a-b) )
                     result++;
-                
+                                  
+                }
             if( result >=2 )
                 break;
         }
                                                  
-        if(result == 1){
-            cout << l << endl;
+        if(result == 1)            
             count++;
-        }
+        
         
     }
 
