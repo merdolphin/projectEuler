@@ -24,61 +24,37 @@ using namespace std;
 // main code area
 //============================================
 
-#define L 15e5
+#define L 120
 
-bool only_one_triangle(long );
-bool have_cd(long , long );
+bool is_coprime(long m, long n){
+    for(int i=2; i<=n; i++)
+        if(m%i == 0 && n%i == 0)
+            return false;
+    return true;        
+}
 
 int main(){
+
+    long m, n;
+    long a, b, c;
+
+    long result = 0;
     
-    long l=120;
-    if(only_one_triangle(l))
-        cout << l << endl;
+    for(n = 1; n < ( sqrt(1+2*L) - 1)/2; n++)
+        for(m = n+1; m < sqrt(L/2); m++)
+     //for(n = 1; n < L; n++)
+       //  for(m=n+1; m< L; m++)
+            // m and n are coprime and m − n is odd
+            if(is_coprime(m, n) ) {
+                a = m*m - n*n;
+                b = m*n;
+                c = m*m + n*n;
 
-    return 0;
-}
-
-bool only_one_triangle(long l){
-    
-    int m, n;
-    int result = 0;
-
-    vector<long> va;
-
-    for(m=2; m<sqrt(l/2); m++){
-        
-        //if( result == 2 )
-        //    break;
-
-        for(n=1; n<m; n++){
-            long a =0, b = 0, c = 0;
-            a = 2*m*n;
-            b = m*m - n*n;
-            c = m*m + n*n;
-
-            if( a+b+c <= l && l%(a+b+c) == 0 ){
-                va.push_back(a);
-                if(va.size()>1 && !have_cd(va[0], a)){
-                    cout << a << " " << va[0] << endl;
-                    return false;
+                if(a + b + c <= L ){
+                    cout << a+b+c << " " << a << " " << b << " " << c << endl;
+                    result++;
                 }
-                result++;
             }
-        }
-    }
+            cout << result << endl;
 
-    if(result >= 1)
-        return true;
-
-}
-
-
-bool have_cd(long a, long b){ // have_common_divisor
-    
-    long mini= a<b ? a:b;
-
-    for(int i=2; i<mini; i++)
-        if(a%i == 0 && b%i == 0)
-            return true;
-    return false;
 }
