@@ -51,16 +51,15 @@ int main(){
     }
  
     
-    int i, j;
+    int i; //j;
 
-    for(j=78; j>=0; j--)
-        matrix[79][j] += matrix[79][j+1];
+   // cout << matrix.size() << endl;
     
-    for(i=78; i>=0; i--)
-        for(j=78; j>=0; j--)
-            matrix[i][j] += matrix[i+1][j] < matrix[i][j+1] ? matrix[i+1][j]:matrix[i][j+1];
+    for(i=0; i< 80; i++)
+        matrix[i][78] += matrix[i][79];
+    
         
-   cout << matrix[0][0] << endl;
+   cout << matrix[79][78] << endl;
         
     return 0;
 }
