@@ -10,5 +10,10 @@ Version 1 basically is built on brute-force way, its only elegance is to waste c
 
 Version 2 and Version 3 use some algorithms. All those algorithms and proofs can be found from wikipedia.
 
+Please kindly note that those without "End: data" are those un-finished.
  
-To be continue ... 
+I am occupied by lots of other things, so I can only spare few time on it.
+
+I guess it needs one year to finish.
+ 
+To be continue ... when I get time.
