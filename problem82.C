@@ -58,7 +58,7 @@ int main(){
     for(i=0; i< 80; i++)
         matrix[i][78] += matrix[i][79];
     
-    /*
+   
     for(j=77; j>=0; j--){
         matrix[0][j] += min( matrix[1][j], matrix[0][j+1]);
         
@@ -67,7 +67,7 @@ int main(){
 
         matrix[79][j] += min( matrix[79][j], matrix[79][j+1]);
     }
-    */
+    
 
     for(int k=0; k<79; k++)        
         cout << matrix[k][0] << endl;
