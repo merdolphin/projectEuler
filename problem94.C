@@ -32,7 +32,7 @@ bool is_integral(int a, int b){
 
     if(sq*sq != a*a - (b/2)*(b/2) )
         return false;
-    if( sq != 0 &&  (b/2*sq) % 2== 0)
+    if(sq*sq == a*a - (b/2)*(b/2) && sq != 0 &&  (b/2*sq) % 2== 0)
         return true;
             
     return false;
