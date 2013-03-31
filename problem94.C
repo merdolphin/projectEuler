@@ -3,7 +3,7 @@
 //
 //  written by lina <lina.oahz@gmail.com> 
 //  start: Sat Mar 30 23:07:45 SGT 2013
-//    end:
+//    end: Sun Mar 31 14:33:46 SGT 2013
 //
 //============================================
 
@@ -23,16 +23,27 @@ using namespace std;
 
 #define N 1e9
 
-bool is_integral(int a, int b){
+bool is_integral(long a, long b){
     
-   
-    int sq;
+    long sq;
+
+    if( b%2 != 0 )
+        return false;
+
+    if( a*a - (b/2)*(b/2) <= 0 )
+        return false;
 
     sq = sqrt(a*a - (b/2)*(b/2));
+    
+    if( sq + b/2 < a ) {
 
-    if(sq*sq != a*a - (b/2)*(b/2) )
         return false;
-    if(sq*sq == a*a - (b/2)*(b/2) && sq != 0 &&  (b/2*sq) % 2== 0)
+    }
+
+    if(sq = 0 || sq*sq != a*a - (b/2)*(b/2) )
+        return false;
+
+    if( (b*sq) % 2== 0)
         return true;
             
     return false;
@@ -40,14 +51,18 @@ bool is_integral(int a, int b){
 
 int main(){
 
-    int a;
-    int sum_perimeters = 0;
+    long a;
+    long sum_perimeters = 0;
 
-    for(a=1;a<N/3; a+=2)
-        if( is_integral(a, a+1) ){
-          //  cout << a << endl;
-            sum_perimeters += 3*a + 1;
-
+    for(a=2;a<N/3+1; a++){
+        
+        if( is_integral(a, a-1))
+            if(3*a - 1 < N)
+                sum_perimeters += 3*a - 1;                
+        
+        if( is_integral(a, a+1) )
+            if(3*a + 1 < N)
+                sum_perimeters += 3*a + 1;
     }
 
     cout << sum_perimeters << endl;
