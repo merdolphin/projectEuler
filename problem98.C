@@ -76,9 +76,6 @@ int main(){
     
     // identify the square anagram word
 
-    //for(int i=0; i<pairs.size(); i++)
-    //    cout << pairs[i]<< endl;
-    
     long square;
     
     int i = 0;
@@ -108,27 +105,25 @@ int main(){
                 dict.insert(std::pair<char, int>(pairs[i][m], ss1.str()[m]-48));
             }
 
-        //for(map<char, int>::iterator it = dict.begin(); it != dict.end(); ++it )
-          //      cout << (*it).first << " " << (*it).second << endl;
 
             stringstream ss2;
             long temp;
             
+            // kick off those with leading zeroes
             if( dict.find(pairs[i+1][0])->second == 0 ){
                 k--;
                 dict.clear();
                 goto d;
             }
             
-            for(int n=0; n<pairs[i+1].length(); n++){
+            for(int n=0; n<pairs[i+1].length(); n++)
                 ss2 << dict.find(pairs[i+1][n])->second;
-                //cout << dict.find(pairs[i+1][n])->first << endl;
-            }
 
             ss2 >> temp;
             int tempa;
             tempa = sqrt(temp);
-
+            
+            // check whether is square and break if it is.
             if(tempa * tempa == temp){
                 result = temp > square ? temp:square ;
                 cout << result << endl;
