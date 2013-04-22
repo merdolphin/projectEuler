@@ -3,7 +3,7 @@
 //
 //  written by lina <lina.oahz@gmail.com> 
 //  start: Mon Apr 15 21:27:21 SGT 2013
-//    end:
+//    end: Mon Apr 22 18:20:51 SGT 2013
 //
 //============================================
 
@@ -32,6 +32,8 @@ bool stringsize (string a, string b){ return a.length() > b.length(); }
 int main(){
 
     // Read file and extract all the words out.
+
+    long result;
 
     ifstream myfile ("words.txt");
 
@@ -74,25 +76,75 @@ int main(){
     
     // identify the square anagram word
 
-    for(int i=0; i<pairs.size(); i++)
-        cout << pairs[i]<< endl;
+    //for(int i=0; i<pairs.size(); i++)
+    //    cout << pairs[i]<< endl;
     
     long square;
     
     int i = 0;
-    int k = 1e5;
+    int k = sqrt(1e9) + 1;
 
-    while( i < pairs.size() ){
-        
-        map<char, int> dict;
+    d:while( i < pairs.size() ){
             
         square = pow(k, 2);
         
+        stringstream ss1;
+        ss1 << square;
+
+        if(ss1.str().length() > pairs[i].length()){
+            k--;
+        }
+
+        if(ss1.str().length() == pairs[i].length()){
+            map<char, int> dict;
+            for(int m=0; m<pairs[i].length(); m++){
+                for(map<char, int>::iterator it = dict.begin(); it != dict.end(); ++it){
+                    if(it->second == (ss1.str()[m]-48) && it->first != pairs[i][m]){
+                        k--;
+                        dict.clear();
+                        goto d;
+                    }
+                }
+                dict.insert(std::pair<char, int>(pairs[i][m], ss1.str()[m]-48));
+            }
+
+        //for(map<char, int>::iterator it = dict.begin(); it != dict.end(); ++it )
+          //      cout << (*it).first << " " << (*it).second << endl;
+
+            stringstream ss2;
+            long temp;
+            
+            if( dict.find(pairs[i+1][0])->second == 0 ){
+                k--;
+                dict.clear();
+                goto d;
+            }
+            
+            for(int n=0; n<pairs[i+1].length(); n++){
+                ss2 << dict.find(pairs[i+1][n])->second;
+                //cout << dict.find(pairs[i+1][n])->first << endl;
+            }
+
+            ss2 >> temp;
+            int tempa;
+            tempa = sqrt(temp);
+
+            if(tempa * tempa == temp){
+                result = temp > square ? temp:square ;
+                cout << result << endl;
+                break;
+            }else{
+                k--;
+            }
+
+            dict.clear();   
+        }
         
-        
-        cout<< square << endl;
-        
-        i += 2;
+        if(ss1.str().length() < pairs[i].length()){
+            i += 2;
+            k = sqrt(k*k*10)+1;
+        }
+
     }
 
 
