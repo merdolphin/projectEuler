@@ -2,7 +2,7 @@
 //  problem107.C 
 //
 //  written by lina <lina.oahz@gmail.com> 
-//  start: Mon Apr 29 00:17:12 SGT 2013
+//  start: Sun Apr 28 23:08:26 SGT 2013
 //    end:
 //
 //  Please refer to:
@@ -46,25 +46,16 @@ bool myfunction (edges_t i, edges_t j) { return (i.edge > j.edge); }
 
 
 bool connected(int ver1, int ver2, vector<edges_t> b){
-    cout << ver1 << " , " << ver2 << endl;  
-    vector<int> possible_trees;
-     
+        
     for(unsigned int i=0; i<b.size(); i++)
         if( b[i].v1 == ver1){
-            possible_trees.push_back(i);
-        }
-    cout << possible_trees.size() << endl;
-
-    for(unsigned int i=0; i<possible_trees.size(); i++)
-        if(b[i].v2 == ver2)
+            if(b[i].v2 == ver2){
                 return true;
-       
-    for(unsigned int i=0; i<possible_trees.size(); i++)
-        if( connected(b[i].v2, ver2, b) ){
-            return true;
-            break;
+            }else{
+                connected(b[i].v2, ver2, b);
+            }
         }
-    
+                    
     return false;                    
 }
 
@@ -117,7 +108,7 @@ int main(){
     }
     
     for(vector<edges_t>::iterator it=graph.begin(); it !=graph.end(); it++){
-        //cout << it->edge << " " << it->v1 << " " << it->v2 << endl;
+       // cout << it->edge << " " << it->v1 << " " << it->v2 << endl;
         min += it->edge;
     }
     
