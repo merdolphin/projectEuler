@@ -2,8 +2,8 @@
 //  problem107.C 
 //
 //  written by lina <lina.oahz@gmail.com> 
-//  start: Mon Apr 29 23:39:52 SGT 2013
-//    end: 
+//  start: Mon Apr 29 00:17:12 SGT 2013
+//    end:
 //
 //  Please refer to:
 //  http://en.wikipedia.org/wiki/Reverse-delete_algorithm
@@ -40,36 +40,37 @@ struct edges_t {
 };
 
 
+vector<edges_t> graph;
+
 bool myfunction (edges_t i, edges_t j) { return (i.edge > j.edge); }
 
 
 bool connected(int ver1, int ver2, vector<edges_t> b){
-        
-    vector<int> possible_vs;
-        
-    for(unsigned int i=0; i<b.size(); i++){
+    cout << ver1 << " , " << ver2 << endl;  
+    vector<int> possible_trees;
+     
+    for(unsigned int i=0; i<b.size(); i++)
         if( b[i].v1 == ver1){
-            if(b[i].v2 == ver2){
-                return true;
-            }else{
-                possible_vs.push_back(b[i].v2);    
-            }
+            possible_trees.push_back(i);
         }
-    }
+    cout << possible_trees.size() << endl;
 
-    for(unsigned j=0; j<possible_vs.size(); j++)
-        if( connected(possible_vs[j], ver2, b) ){
+    for(unsigned int i=0; i<possible_trees.size(); i++)
+        if(b[i].v2 == ver2)
+                return true;
+       
+    for(unsigned int i=0; i<possible_trees.size(); i++)
+        if( connected(b[i].v2, ver2, b) ){
             return true;
+            break;
         }
-                               
+    
     return false;                    
 }
 
 int main(){
 
     long sum = 0, min = 0;
-
-    vector<edges_t> graph;
 
     // Read file and extract data into graph
     
@@ -102,33 +103,27 @@ int main(){
 
     sort(graph.begin(), graph.end(), myfunction);
     
-    //for(vector<edges_t>::iterator it=graph.begin(); it !=graph.end(); it++){
-    //    cout << it->edge << " " << it->v1 << " " << it->v2 << endl;
-    //}
-
-
     unsigned int i = 0;
     
     while( i < graph.size() ){
         edges_t temp;
         temp = graph[i];
         graph.erase( graph.begin()+i );
-        cout <<"erase " << temp.edge << " " << temp.v1 << " " << temp.v2 << endl;
         if( ! connected(temp.v1, temp.v2, graph) ){
-            cout << "add back again" << endl;
-            graph.insert(graph.begin()+i, temp);   
-            i++;  
-        }    
+            cout << i << endl;
+            graph.insert(graph.begin()+i, temp);     
+        }
+        i++;       
     }
     
     for(vector<edges_t>::iterator it=graph.begin(); it !=graph.end(); it++){
-        cout << it->edge << " " << it->v1 << " " << it->v2 << endl;
+        //cout << it->edge << " " << it->v1 << " " << it->v2 << endl;
         min += it->edge;
     }
     
-    long temp = sum - 259679;
+    int temp = sum - 259679;
     cout << sum << " I remove " << sum - min << " remain " << min  << " , other remove " <<  temp  << ", need remove extra " << temp-min << endl;
-    
+
     return 0;
 }
 
