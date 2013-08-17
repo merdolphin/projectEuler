@@ -2,7 +2,7 @@
 //  problem107.C 
 //
 //  written by lina <lina.oahz@gmail.com> 
-//  start: Mon Apr 29 23:39:52 SGT 2013
+//  start: Tue Apr 30 22:44:39 SGT 2013
 //    end: 
 //
 //  Please refer to:
@@ -42,26 +42,30 @@ struct edges_t {
 
 bool myfunction (edges_t i, edges_t j) { return (i.edge > j.edge); }
 
+bool found(int vanother, vector<edges_t> a){
+    
+    for(unsigned int i=0; i<a.size(); i++){
+        if( a[i].v1 == vanother )
+            for(unsigned int j=0; j<a.size(); j++)
+                if( (j != i) && (a[i].v2 == a[j].v1 || a[i].v2 == a[j].v2) )
+                    return true;
+        if( a[i].v2 == vanother )
+            for(unsigned int k=0; k<a.size(); k++)
+                if( (k != i) && (a[i].v2 == a[k].v1 || a[i].v2 == a[k].v2) )
+                    return true;       
+    }
+   
+
+    return false;        
+}
+
 
 bool connected(int ver1, int ver2, vector<edges_t> b){
-        
-    vector<int> possible_vs;
-        
-    for(unsigned int i=0; i<b.size(); i++){
-        if( b[i].v1 == ver1){
-            if(b[i].v2 == ver2){
-                return true;
-            }else{
-                possible_vs.push_back(b[i].v2);    
-            }
-        }
-    }
-
-    for(unsigned j=0; j<possible_vs.size(); j++)
-        if( connected(possible_vs[j], ver2, b) ){
-            return true;
-        }
-                               
+   
+    if( found(ver1, b) )
+        if( found(ver2, b) )
+            return true;     
+                        
     return false;                    
 }
 
@@ -73,7 +77,8 @@ int main(){
 
     // Read file and extract data into graph
     
-    ifstream myfile ("network.txt");
+    //ifstream myfile ("network.txt");
+    ifstream myfile("example.txt");
     string line;
     
     if( myfile.is_open() ){
