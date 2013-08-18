@@ -8,6 +8,6 @@ package Problem082;
 
 public class GV {
 
-	public static int size = 5;
+	public static int size = 80;
 
 }

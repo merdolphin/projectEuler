@@ -1,6 +1,6 @@
 /*** Written by lina <lina.oahz@gmail.com>
  *   Start on: Sat Aug 17 23:56:26 SGT 2013
- *   End on: 
+ *   End on: Sun Aug 18 23:30:40 SGT 2013
  *   
  *   "I used to think life is deterministic, 
  *   and today I started to realize 
@@ -13,56 +13,88 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList; 
-import java.util.Scanner;
 import Problem082.GV;
 
 
 public class Problem082 {
 	
 
-	private static void readFile(String fileName){
+	private static int[][] readFileToMatrix(String fileName){
 		try{
 			
 			File file = new File (fileName);
 			FileReader reader = new FileReader(file);
 			BufferedReader in = new BufferedReader(reader);
 			
-			String[][] matrix = new String[GV.size][GV.size];
+			int [][] matrix = new int[GV.size][GV.size];
 			
 			String line;
 			int i = 0;
 			while( (line = in.readLine()) != null ){
-				matrix[i++] = line.split(",");
+				int j = 0;
+				for(String date : line.split(",")){
+					matrix[i][j++] = Integer.parseInt(date);
+				}
+				i++;
 			}
 			in.close();
 			
-			miniPath(matrix);
+			return extracted(matrix);
 			
 		} catch (IOException e){
 			e.printStackTrace();
 		}
+		return null;
 		
 	}
+
+	private static int[][] extracted(int[][] matrix) {
+		return matrix;
+	}
 	
-	public static void miniPath(String[][]arr2d){
+	public static void miniPath(int[][] arr2d){
 		int i;
 		int j;
-		
+		int [] sol = new int[GV.size];
+
+		// initilization sol to the left-est columns.
 		for(i=0; i<GV.size; i++){
-			for(j=0; j<arr2d[0].length; j++){
-				System.out.print(Integer.parseInt(arr2d[i][j]) - 1 + " ");
-			}
-			System.out.println();
+			sol[i] = arr2d[i][GV.size-1];
 		}
 		
+		//From left to right
+		for(j=GV.size-2; j>=0; j--){
+			
+			sol[0] += arr2d[0][j];
+			sol[GV.size-1] += arr2d[GV.size-1][j];
+			for(i=1;i<GV.size-1;i++){
+				sol[i] = Math.min(sol[i-1]+arr2d[i][j], sol[i]+arr2d[i][j]);
+			}
+			
+			for(i=GV.size-2; i>0; i--){
+				sol[i] = Math.min(sol[i+1]+arr2d[i][j], sol[i]);
+			}
+			
+			//for(i=0; i<GV.size; i++){
+			//	System.out.println(j + " " + sol[i]);
+			//}
+		}
+		
+		System.out.println();
+		
+		int min = sol[0];
+		for(i=1; i<GV.size; i++){
+			//System.out.print(sol[i] + " ");
+			min = min<sol[i]?min:sol[i]; 
+		}
+			System.out.println("The answer is: " + min);
 	}
 	
 	
 	public static void main(String[] args) {
 		//System.out.println(System.getProperty("user.dir"));
 		
-		readFile("test.txt");
+		miniPath(readFileToMatrix("test_data//matrix.txt"));
 	}
 
 }
