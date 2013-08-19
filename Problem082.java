@@ -20,7 +20,7 @@ public class Problem082 {
 	
 
 	
-	private static final int size = 80;
+	private static int size = 80;
 
 
 	private static int[][] readFileToMatrix(String fileName){
