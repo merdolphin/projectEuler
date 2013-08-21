@@ -1,8 +1,11 @@
 /*** Written by lina <lina.oahz@gmail.com>
  *   Start on: Mon Aug 19 23:20:33 SGT 2013
  *   End on: 
- *   "Baby is afraid of betrayal. Baby feels hurt, disappointed and sad.
- *   and baby is very very silent."
+ *   
+ *   Reference:
+ *   http://renaud.waldura.com/doc/java/dijkstra/
+ *   http://www.vogella.com/articles/JavaAlgorithmsDijkstra/article.html
+ *   https://www.youtube.com/watch?v=8Ls1RqHCOPw
  */
 
 package problem083;
@@ -11,13 +14,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.HashSet;
+import java.util.Set;
+import problem083.Matrix;
 
 public class Problem083 {
 	
 	private static int GridSize = 5;
-
-
+	
+	private static Set<Matrix> visited;
+	private static Set<Matrix> unVisited;
 
 	private static int[][] readFileToMatrix(String fileName){
 		try{
@@ -44,8 +50,7 @@ public class Problem083 {
 		} catch (IOException e){
 			e.printStackTrace();
 		}
-		return null;
-		
+		return null;		
 	}
 	
 	
@@ -54,16 +59,27 @@ public class Problem083 {
 	}
 	
 	
-	public static void miniPath(int[][] arr2d){
-		int i;
-		int j;
+	public static void excute(int[][] arr2d){
+		int i, j;
+		unVisited = new HashSet<Matrix>();
+		visited = new HashSet<Matrix>();
 
 		for(i=0; i<GridSize; i++){
 			for(j=0; j<GridSize;j++){
-				System.out.println(arr2d[i][j]);
+				Matrix m = new Matrix(i,j,arr2d[i][j]);
+				unVisited.add(m);
 			}
 		}
+		while(unVisited.size()>0){
+			Matrix next = getMinimum(unVisited);
+			visited.add(next);
+			unVisited.remove(next);
+			findMinimum(next);
+		}
+		
 	}
+	
+	private Matrix findMinimum()
 		
 
 
