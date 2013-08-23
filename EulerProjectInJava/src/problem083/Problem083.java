@@ -1,14 +1,10 @@
-/*** Written by lina <lina.oahz@gmail.com>
- *   Start on: Mon Aug 19 23:20:33 SGT 2013
- *   End on: 
- *   
- *   Reference:
- *   http://renaud.waldura.com/doc/java/dijkstra/
- *   http://www.vogella.com/articles/JavaAlgorithmsDijkstra/article.html
- *   https://www.youtube.com/watch?v=8Ls1RqHCOPw
- */
-
 package problem083;
+
+/***
+ * Written by lina <lina.oahz@gmail.com> 
+ * start: Thu Aug 22 22:45:54 SGT 2013
+ * end: 
+ */
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,14 +12,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-import problem083.Matrix;
+import problem083.DijkstraAlgorithmEngine;
+import problem083.Element;
 
 public class Problem083 {
 	
 	private static int GridSize = 5;
-	
-	private static Set<Matrix> visited;
-	private static Set<Matrix> unVisited;
 
 	private static int[][] readFileToMatrix(String fileName){
 		try{
@@ -59,32 +53,15 @@ public class Problem083 {
 	}
 	
 	
-	public static void excute(int[][] arr2d){
-		int i, j;
-		unVisited = new HashSet<Matrix>();
-		visited = new HashSet<Matrix>();
-
-		for(i=0; i<GridSize; i++){
-			for(j=0; j<GridSize;j++){
-				Matrix m = new Matrix(i,j,arr2d[i][j]);
-				unVisited.add(m);
-			}
-		}
-		while(unVisited.size()>0){
-			Matrix next = getMinimum(unVisited);
-			visited.add(next);
-			unVisited.remove(next);
-			findMinimum(next);
-		}
-		
-	}
-	
-	private Matrix findMinimum()
-		
-
-
 	public static void main(String[] args) {
+		
+		int[][] myMatrix = new int [GridSize][GridSize]; 	
+		
+		myMatrix = readFileToMatrix("test_data//test_83.txt");
 	
-		miniPath(readFileToMatrix("test_data//test_83.txt"));
+		DijkstraAlgorithmEngine dijkstra = new DijkstraAlgorithmEngine(myMatrix);
+		Element start = new Element(0,0, myMatrix[0][0]);
+		Element destination = new Element(GridSize-1, GridSize-1, myMatrix[GridSize-1][GridSize-1]);
+		dijkstra.execute(start, destination);
 	}
 }
