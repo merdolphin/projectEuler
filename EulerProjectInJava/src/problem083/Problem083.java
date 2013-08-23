@@ -3,7 +3,7 @@ package problem083;
 /***
  * Written by lina <lina.oahz@gmail.com> 
  * start: Thu Aug 22 22:45:54 SGT 2013
- * end: 
+ * end: Sat Aug 24 00:56:10 SGT 2013
  */
 
 import java.io.BufferedReader;
@@ -17,7 +17,7 @@ import problem083.Element;
 
 public class Problem083 {
 	
-	private static int GridSize = 5;
+	private static int GridSize = 80;
 
 	private static int[][] readFileToMatrix(String fileName){
 		try{
@@ -57,7 +57,7 @@ public class Problem083 {
 		
 		int[][] myMatrix = new int [GridSize][GridSize]; 	
 		
-		myMatrix = readFileToMatrix("test_data//test_83.txt");
+		myMatrix = readFileToMatrix("test_data//matrix.txt");
 	
 		DijkstraAlgorithmEngine dijkstra = new DijkstraAlgorithmEngine(myMatrix);
 		Element start = new Element(0,0, myMatrix[0][0]);
